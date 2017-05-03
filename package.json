@@ -1,0 +1,25 @@
+{
+  "name": "craft_beer_api",
+  "version": "1.0.0",
+  "description": "An API serving up data about American Craft Beers",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wlffann/craft_beer_api.git"
+  },
+  "keywords": [
+    "express",
+    "beer",
+    "node",
+    "api"
+  ],
+  "author": "Annie Wolff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wlffann/craft_beer_api/issues"
+  },
+  "homepage": "https://github.com/wlffann/craft_beer_api#readme"
+}
