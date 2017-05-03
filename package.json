@@ -4,7 +4,8 @@
   "description": "An API serving up data about American Craft Beers",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/wlffann/craft_beer_api/issues"
   },
-  "homepage": "https://github.com/wlffann/craft_beer_api#readme"
+  "homepage": "https://github.com/wlffann/craft_beer_api#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "pg": "^6.1.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
+  }
 }
