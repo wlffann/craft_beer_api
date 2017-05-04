@@ -71,4 +71,34 @@ describe('Beers', () => {
 			})
 		})
 	})
+
+	describe('GET /beers/by/:property', () => {
+		it('should return a 200', (done) => {
+			this.request.get('/beers/by/style=IPA', (error, response) => {
+				if(error) {done(error)}
+				assert.equal(response.statusCode, 200)
+				done()
+			})
+		})
+		
+		it('should return all matching records by style', (done) => {
+			this.request.get('/beers/by/style=IPA', (error, response) => {
+				if(error) {done(error)}
+				let beers = JSON.parse(response.body)
+				assert.equal(beers.length, 1)
+				assert.equal(beers[0].name, 'Rise of the Phoenix')
+				done()
+			})
+		})
+
+		it('should return all matching records by name', (done) => {
+			this.request.get('/beers/by/name=Devils%20Cup', (error, response) => {
+				if(error) {done(error)}
+				let beers = JSON.parse(response.body)
+				assert.equal(beers.length, 1)
+				assert.equal(beers[0].name, "Devils Cup")
+				done()
+			})
+		})
+	})
 })

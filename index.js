@@ -14,6 +14,10 @@ app.get('/beers', (request, response) => {
 	BeersController.index(request, response)
 })
 
+app.get('/beers/by/:property', (request, response) => {
+	BeersController.find_by(request, response)
+})
+
 app.get('/beers/:id', (request, response) => {
 	BeersController.show(request, response)
 })
