@@ -51,4 +51,24 @@ describe('Beers', () => {
       })
     })
   })
+
+	describe('GET /beers/:id', () => {
+		it('should recieve a 200', (done) => {
+			this.request.get('/beers/1', (error, response) => {
+				if(error) { done(error) }
+				assert.equal(response.statusCode, 200)
+				done()
+			})
+		})
+
+		it('should return the matching record', (done) => {
+			this.request.get('/beers/1', (error, response) => {
+				if(error) { done(error) }
+				let beer = JSON.parse(response.body)
+				assert.equal(beer["id"], 1)
+				assert.equal(beer["name"], "Pub Beer")
+				done()
+			})
+		})
+	})
 })
