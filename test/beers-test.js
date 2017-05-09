@@ -31,7 +31,7 @@ describe('Beers', () => {
 
 	afterEach((done) => {
 		Beer.clearAll().then(() => done())
-	})  
+	})
 
 	describe('GET /beers', () => {
 		it('should recieve a 200', (done) => {
@@ -45,7 +45,7 @@ describe('Beers', () => {
     it('should return all beers', (done) => {
 			this.request.get('/beers', (error, response) => {
         if(error) { done(error) }
-				let beers = JSON.parse(response.body)["beers"]
+				let beers = JSON.parse(response.body)
         assert.equal(beers.length, 3)
 				done()
       })

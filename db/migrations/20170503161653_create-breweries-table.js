@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-	knex.schema.createTable('breweries', (table) => {
+	return knex.schema.createTable('breweries', (table) => {
 		table.integer('id')
 		table.string('name')
 		table.string('city')
@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-	knex.schema.dropTable('breweries') 
+	return knex.schema.dropTable('breweries') 
 };

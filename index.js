@@ -26,6 +26,14 @@ app.get('/beers/:id', (request, response) => {
 	BeersController.show(request, response)
 })
 
+app.get('/breweries', (request, response) => {
+	BreweriesController.index(request, response)
+})
+
+app.get('/breweries/:id', (request, response) => {
+	BreweriesController.show(request, response)
+})
+
 app.listen(app.get('port'), () => {
 	console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
