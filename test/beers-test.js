@@ -11,7 +11,7 @@ describe('Beers', () => {
 			done()
 		})
 		this.request = request.defaults({
-			baseUrl: 'http://localhost:9876/'
+			baseUrl: 'http://localhost:9876/api/v1'
 		})
 	})
 

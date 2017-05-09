@@ -1,5 +1,6 @@
-const express = require('express')
-const app = express()
+const express = require('express'),
+	apiV1Router = express.Router(),
+	app = express();
 const BeersController = require('./lib/controllers/beersController')
 const BreweriesController = require('./lib/controllers/breweriesController')
 
@@ -10,33 +11,35 @@ app.get('/', (request, response) => {
 	response.send(`Welcome to the ${app.locals.title}`)
 })
 
-app.get('/beers', (request, response) => {
+apiV1Router.get('/beers', (request, response) => {
 	BeersController.index(request, response)
 })
 
-app.get('/beers/by/:property', (request, response) => {
+apiV1Router.get('/beers/by/:property', (request, response) => {
 	BeersController.findBy(request, response)
 })
 
-app.get('/beers/within/:range', (request, response) => {
+apiV1Router.get('/beers/within/:range', (request, response) => {
 	BeersController.findRange(request, response)
 })
 
-app.get('/beers/:id', (request, response) => {
+apiV1Router.get('/beers/:id', (request, response) => {
 	BeersController.show(request, response)
 })
 
-app.get('/breweries', (request, response) => {
+apiV1Router.get('/breweries', (request, response) => {
 	BreweriesController.index(request, response)
 })
 
-app.get('/breweries/:id', (request, response) => {
+apiV1Router.get('/breweries/:id', (request, response) => {
 	BreweriesController.show(request, response)
 })
 
-app.get('/breweries/by/:property', (request, response) => {
+apiV1Router.get('/breweries/by/:property', (request, response) => {
 	BreweriesController.findBy(request, response)
 })
+
+app.use('/api/v1', apiV1Router)
 
 app.listen(app.get('port'), () => {
 	console.log(`${app.locals.title} is running on ${app.get('port')}.`)
