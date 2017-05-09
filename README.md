@@ -28,6 +28,10 @@ Returns all records of breweries including their name, city and state.
 
 Returns the record for the brewery with the matching id.
 
+#### `/api/v1/breweries/:id/beers`
+
+Returns all beers for the brewery with the matching id.
+
 #### `/api/v1/breweries/by/:property`
 
 Returns all records with similar or matching values for the given property. Parameters must be formatted as `property=value` (ex: `city=Louisville`). Spaces in names must be replaced with `%20`. Available properties to search by include name, city, and state.

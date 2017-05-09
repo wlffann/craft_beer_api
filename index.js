@@ -31,12 +31,16 @@ apiV1Router.get('/breweries', (request, response) => {
 	BreweriesController.index(request, response)
 })
 
-apiV1Router.get('/breweries/:id', (request, response) => {
-	BreweriesController.show(request, response)
+apiV1Router.get('/breweries/:id/beers', (request, response) => {
+	BreweriesController.beers(request, response)
 })
 
 apiV1Router.get('/breweries/by/:property', (request, response) => {
 	BreweriesController.findBy(request, response)
+})
+
+apiV1Router.get('/breweries/:id', (request, response) => {
+	BreweriesController.show(request, response)
 })
 
 app.use('/api/v1', apiV1Router)

@@ -2,6 +2,7 @@ const assert = require('chai').assert
 const app = require('../index')
 const request = require('request')
 const Brewery = require('../lib/models/brewery')
+const Beer = require('../lib/models/beer')
 
 describe('Breweries', () => {
   before(done => {
@@ -24,13 +25,19 @@ describe('Breweries', () => {
 			[
 				Brewery.create(0, 'NorthGate Brewing', 'Minneapolis', 'MN'),
 				Brewery.create(1, 'Against the Grain Brewery', 'Louisville', 'KY'),
-				Brewery.create(2, "Jack's Abby Craft Lagers", 'Framingham', 'MA')
+				Brewery.create(2, "Jack's Abby Craft Lagers", 'Framingham', 'MA'),
+        Beer.create(68, 0.08, 'Citra Ass Down', 'American Double / Imperial IPA', 1, 16),
+        Beer.create(42, 0.042, 'A Beer', 'American Pale Ale (APA)', 1, 16),
+        Beer.create(20, 0.05, 'The Brown Note', 'English Brown Ale', 1, 16)
 			]
 		).then(() => done())
 	})
 
 	afterEach((done) => {
-		Brewery.clearAll().then(() => done())
+		Promise.all([
+      Brewery.clearAll(),
+      Beer.clearAll()
+    ]).then(() => done())
 	})
 
   describe('GET /breweries', () => {
@@ -110,6 +117,26 @@ describe('Breweries', () => {
         assert.equal(breweries[0].name, 'NorthGate Brewing')
         done()
       })
+    })
+  })
+
+  describe('GET /breweries/1/beers', () => {
+    it('should return a 200', (done) => {
+      this.request.get('/breweries/1/beers', (error, response) => {
+				if(error) { done(error) }
+				assert.equal(response.statusCode, 200)
+				done()
+			})     
+    })
+
+    it('should return all records of beers for the given brewery', (done) => {
+      this.request.get('/breweries/1/beers', (error, response) => {
+				if(error) { done(error) }
+        let beers = JSON.parse(response.body)
+        assert.equal(beers.length, 3)
+				assert.equal(beers[0].name, 'Citra Ass Down')
+				done()
+			})     
     })
   })
 })
