@@ -23,8 +23,8 @@ describe('Beers', () => {
 		Promise.all(
 			[
 				Beer.create(60, 0.05, 'Pub Beer', 'American Pale Lager', 408, 12),
-				Beer.create(60, 0.066, 'Devils Cup', 'American Pale Ale (APA)', 177, 12),
-				Beer.create(60, 0.071, 'Rise of the Phoenix', 'American IPA', 177, 12)
+				Beer.create(48, 0.066, 'Devils Cup', 'American Pale Ale (APA)', 177, 12),
+				Beer.create(90, 0.071, 'Rise of the Phoenix', 'American IPA', 177, 12)
 			]
 		).then(() => done())
 	})
@@ -96,6 +96,36 @@ describe('Beers', () => {
 				if(error) {done(error)}
 				let beers = JSON.parse(response.body)
 				assert.equal(beers.length, 1)
+				assert.equal(beers[0].name, "Devils Cup")
+				done()
+			})
+		})
+	})
+
+	describe('GET /beers/abv/:range', () => {
+		it('should return a 200', (done) => {
+			this.request.get('/beers/within/abv=0.05-0.07', (error, response) => {
+				if(error) {done(error)}
+				assert.equal(response.statusCode, 200)
+				done()
+			})
+		})
+
+		it('should return all records within range for abv', (done) => {
+			this.request.get('/beers/within/abv=0.05-0.07', (error, response) => {
+				if(error) {done(error)}
+				let beers = JSON.parse(response.body)
+				assert.equal(beers.length, 2)
+				assert.equal(beers[0].name, "Pub Beer")
+				done()
+			})
+		})
+
+		it('should return all records with a range for ibu', (done) => {
+			this.request.get('/beers/within/ibu=48-65', (error, response) => {
+				if(error) {done(error)}
+				let beers = JSON.parse(response.body)
+				assert.equal(beers.length, 2)
 				assert.equal(beers[0].name, "Devils Cup")
 				done()
 			})

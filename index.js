@@ -18,6 +18,10 @@ app.get('/beers/by/:property', (request, response) => {
 	BeersController.find_by(request, response)
 })
 
+app.get('/beers/within/:range', (request, response) => {
+	BeersController.find_range(request, response)
+})
+
 app.get('/beers/:id', (request, response) => {
 	BeersController.show(request, response)
 })
