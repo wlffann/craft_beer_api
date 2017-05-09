@@ -72,4 +72,44 @@ describe('Breweries', () => {
 			})
     })
   })
+
+  describe('GET /breweries/by/:property', () => {
+    it('should return a 200', (done) => {
+      this.request.get('/breweries/by/name=NorthGate%20Brewing', (error, response) => {
+				if(error) { done(error) }
+				assert.equal(response.statusCode, 200)
+				done()
+			})     
+    })
+
+    it('should return matching records by name', (done) => {
+      this.request.get('/breweries/by/name=NorthGate', (error, response) => {
+				if(error) { done(error) }
+        let breweries = JSON.parse(response.body)
+        assert.equal(breweries.length, 1)
+        assert.equal(breweries[0].name, 'NorthGate Brewing')
+        done()
+      })
+    })
+
+    it('should return matching records by state', (done) => {
+      this.request.get('/breweries/by/state=MN', (error, response) => {
+				if(error) { done(error) }
+        let breweries = JSON.parse(response.body)
+        assert.equal(breweries.length, 1)
+        assert.equal(breweries[0].name, 'NorthGate Brewing')
+        done()
+      })
+    })
+
+    it('should return matching records by city', (done) => {
+      this.request.get('/breweries/by/city=Minneapolis', (error, response) => {
+				if(error) { done(error) }
+        let breweries = JSON.parse(response.body)
+        assert.equal(breweries.length, 1)
+        assert.equal(breweries[0].name, 'NorthGate Brewing')
+        done()
+      })
+    })
+  })
 })
