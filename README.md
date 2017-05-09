@@ -2,6 +2,8 @@
 
 Serving up suds and data on America's craft beers.
 
+This api serves data in JSON for 500+ craft breweries in the US and their beers. It is based on the Kaggle dataset by Jean-NicholasHould that can be found [here](https://www.kaggle.com/nickhould/craft-cans).
+
 ## Available Endpoints
 
 #### `/api/v1/beers`
