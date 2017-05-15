@@ -2,7 +2,7 @@
 
 Serving up suds and data on America's craft beers.
 
-This api serves data in JSON for 500+ craft breweries in the US and their beers. It is based on the Kaggle dataset by Jean-NicholasHould that can be found [here](https://www.kaggle.com/nickhould/craft-cans).
+Built on Node.js and Express.js, this api serves data in JSON for 500+ craft breweries in the US and their beers. It is based on the Kaggle dataset by Jean-NicholasHould that can be found [here](https://www.kaggle.com/nickhould/craft-cans).
 
 ## Available Endpoints
 
@@ -37,3 +37,27 @@ Returns all beers for the brewery with the matching id.
 #### `/api/v1/breweries/by/:property`
 
 Returns all records with similar or matching values for the given property. Parameters must be formatted as `property=value` (ex: `city=Louisville`). Spaces in names must be replaced with `%20`. Available properties to search by include name, city, and state.
+
+## Installation
+
+To run the Craft Beer API on your local machine, first, clone this repository:
+
+```
+$ git clone https://github.com/wlffann/craft_beer_api.git
+$ cd craft_beer_api
+```
+
+Then, run the following commands to set up the environment and database and to start the server:
+
+```
+$ npm install
+$ knex migrate:latest
+$ knex seed:run
+$ npm start
+```
+
+To run the test suite:
+
+```
+$ npm test
+```
