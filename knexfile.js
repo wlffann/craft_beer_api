@@ -11,7 +11,7 @@ module.exports = {
 		seeds: {
 			directory: './db/seeds/dev'
 		},
-		usenullasdefault: true
+		useNullAsDefault: true
 	},
 
 	test: {

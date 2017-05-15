@@ -26,9 +26,9 @@ describe('Breweries', () => {
 				Brewery.create(0, 'NorthGate Brewing', 'Minneapolis', 'MN'),
 				Brewery.create(1, 'Against the Grain Brewery', 'Louisville', 'KY'),
 				Brewery.create(2, "Jack's Abby Craft Lagers", 'Framingham', 'MA'),
-        Beer.create(68, 0.08, 'Citra Ass Down', 'American Double / Imperial IPA', 1, 16),
-        Beer.create(42, 0.042, 'A Beer', 'American Pale Ale (APA)', 1, 16),
-        Beer.create(20, 0.05, 'The Brown Note', 'English Brown Ale', 1, 16)
+        Beer.create(1, 68, 0.08, 'Citra Ass Down', 'American Double / Imperial IPA', 1, 16),
+        Beer.create(2, 42, 0.042, 'A Beer', 'American Pale Ale (APA)', 1, 16),
+        Beer.create(3, 20, 0.05, 'The Brown Note', 'English Brown Ale', 1, 16)
 			]
 		).then(() => done())
 	})

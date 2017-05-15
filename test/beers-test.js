@@ -22,9 +22,9 @@ describe('Beers', () => {
 	beforeEach((done) => {
 		Promise.all(
 			[
-				Beer.create(60, 0.05, 'Pub Beer', 'American Pale Lager', 408, 12),
-				Beer.create(48, 0.066, 'Devils Cup', 'American Pale Ale (APA)', 177, 12),
-				Beer.create(90, 0.071, 'Rise of the Phoenix', 'American IPA', 177, 12)
+				Beer.create(1, 60, 0.05, 'Pub Beer', 'American Pale Lager', 408, 12),
+				Beer.create(2, 48, 0.066, 'Devils Cup', 'American Pale Ale (APA)', 177, 12),
+				Beer.create(3, 90, 0.071, 'Rise of the Phoenix', 'American IPA', 177, 12)
 			]
 		).then(() => done())
 	})
