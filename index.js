@@ -1,14 +1,35 @@
 const express = require('express'),
 	apiV1Router = express.Router(),
 	app = express();
+const md = require('github-flavored-markdown').parse
+const fs = require('fs')
 const BeersController = require('./lib/controllers/beersController')
 const BreweriesController = require('./lib/controllers/breweriesController')
 
 app.set('port', process.env.PORT || 3000)
 app.locals.title = 'Craft Beer API'
 
+app.engine('md', function(path, options, fn){
+  fs.readFile(path, 'utf8', function(err, str){
+    if (err) return fn(err);
+    try {
+      var html = md(str);
+      html = html.replace(/\{([^}]+)\}/g, function(_, name){
+        return options[name] || '';
+      })
+      fn(null, html);
+    } catch(err) {
+      fn(err);
+    }
+  });
+})
+
+app.set('views', __dirname);
+
+app.set('view engine', 'md');
+
 app.get('/', (request, response) => {
-	response.send(`Welcome to the ${app.locals.title}`)
+	response.render('README', {title: 'Craft Beer API'})
 })
 
 apiV1Router.get('/beers', (request, response) => {
